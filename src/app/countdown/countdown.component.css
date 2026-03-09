@@ -1,0 +1,104 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Animated Gradient Background */
+.premium-bg {
+  background: linear-gradient(-45deg, #141e30, #243b55, #1f1c2c, #928dab);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+/* Glass Card */
+.glass-card {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  width: 700px;
+  max-width: 95%;
+}
+
+/* Title */
+.premium-title {
+  font-weight: 800;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #ffd700, #ff69b4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Countdown Box */
+.time-box {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 5px;
+  transition: 0.3s;
+}
+
+.time-box:hover {
+  transform: scale(1.1);
+}
+
+/* Button */
+.premium-btn {
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.premium-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff4b2b;
+}
+
+/* Surprise */
+.surprise-box {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #00f5d4;
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+.card:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+}

@@ -1,0 +1,80 @@
+<div class="premium-bg d-flex align-items-center justify-content-center vh-100 text-white">
+
+    <div class="glass-card text-center p-5">
+
+        <h1 class="premium-title mb-4">
+            Happy Birthday Manju 💖
+        </h1>
+
+        <!-- Countdown -->
+        <div *ngIf="!isBirthdayToday" class="row mb-4">
+            <div class="col" *ngFor="let item of [days, hours, minutes, seconds]; let i = index">
+                <div class="time-box">
+                    <h2>{{item}}</h2>
+                    <small>
+                        {{ i==0?'Days': i==1?'Hours': i==2?'Minutes':'Seconds' }}
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Birthday Message -->
+        <div *ngIf="isBirthdayToday" class="fade-in">
+            <h2 class="text-warning mb-3">Today The Queen Was Born 👑</h2>
+            <p class="lead">
+                Your smile is priceless ✨<br>
+                Your heart is pure 💎<br>
+                May your life shine forever 🌟
+            </p>
+        </div>
+
+        <button class="btn btn-warning mt-4 px-4 py-2 fw-semibold" (click)="revealSurprise()">
+            Unlock Surprise 🎁
+        </button>
+
+        <div *ngIf="showOptions" class="container mt-5">
+
+            <div class="row justify-content-center g-3">
+
+                <!-- GT650 Card -->
+                <div class="col-lg-4 col-md-6 col-10">
+                    <div class="card shadow-sm border-0 h-100" routerLink="/gt" style="cursor:pointer;">
+
+                        <div class="card-body d-flex align-items-center gap-3 py-3">
+                            <span class="fs-3">🎁</span>
+                            <div>
+                                <h6 class="mb-1 fw-bold">Dream Bike</h6>
+                                <small class="text-muted">Explore her favorite ride</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Invitation Card -->
+                <div class="col-lg-4 col-md-6 col-10">
+                    <div class="card shadow-sm border-0 h-100" routerLink="/invitation" style="cursor:pointer;">
+
+                        <div class="card-body d-flex align-items-center gap-3 py-3">
+                            <span class="fs-3">💌</span>
+                            <div>
+                                <h6 class="mb-1 fw-bold">Invitation</h6>
+                                <small class="text-muted">Open special message</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div *ngIf="showSurprise" class="surprise-box mt-4 fade-in">
+            💌 You are not just special…
+            You are unforgettable 💕
+        </div>
+
+    </div>
+
+</div>

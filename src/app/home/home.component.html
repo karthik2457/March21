@@ -1,0 +1,75 @@
+<!-- 🧊 Glass Navbar -->
+<nav class="navbar navbar-expand-lg glass-navbar fixed-top">
+  <div class="container">
+   <a class="navbar-brand d-flex align-items-center" routerLink="/"> <img src="assets\Gradient _MU_ logo design.png" alt="Logo" width="100" height="70" class="rounded-circle me-5" > <span class="fw-bold text-white justify-content-center fs-3"> Your Place </span> </a>
+  </div>
+</nav>
+
+
+<!-- 🔥 Hero Section -->
+<section class="hero-section">
+
+  <div class="hero-card">
+
+    <!-- Animated Title -->
+    <h1 class="hero-title">
+      {{ displayedText }}<span class="cursor">|</span>
+    </h1>
+
+    <p class="hero-subtitle mt-3">
+      Experience a next-generation intelligent assistant.
+    </p>
+
+    <!-- Get Started Button -->
+    <button 
+      (click)="openCard()"
+      class="btn btn-light btn-lg px-5 rounded-pill mt-3">
+      Get Started
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- 🔐 Name Modal -->
+<div *ngIf="showCard"
+     class="modal fade show d-block"
+     style="background: rgba(0,0,0,0.7);">
+
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white text-center p-4 rounded-4 shadow-lg"
+         [ngClass]="{'shake': errorMessage}">
+
+      <h4 class="mb-3">Enter Your Name</h4>
+
+      <input 
+        type="text"
+        [(ngModel)]="userName"
+        (keyup.enter)="submitName()"
+        class="form-control text-center mb-3"
+        placeholder="Type your name...">
+
+      <!-- Normal Button -->
+      <button *ngIf="!loading"
+              class="btn btn-primary w-100"
+              (click)="submitName()">
+        Continue
+      </button>
+
+      <!-- Bootstrap Loader -->
+      <button *ngIf="loading"
+              class="btn btn-primary w-100"
+              disabled>
+        <span class="spinner-border spinner-border-sm me-2"></span>
+        Verifying...
+      </button>
+
+      <div *ngIf="errorMessage"
+           class="text-danger fw-bold mt-3">
+        {{ errorMessage }}
+      </div>
+
+    </div>
+  </div>
+</div>

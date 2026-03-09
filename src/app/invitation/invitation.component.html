@@ -1,0 +1,98 @@
+<div class="bg-container">
+    <audio #bgMusic  loop preload="auto">
+    <source src="assets/stickers/romantic.mp3" type="audio/mpeg">
+</audio>
+    <div class="hearts">
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+    </div>
+
+    <!-- Envelope -->
+
+    <div *ngIf="!opened" class="envelope-scene">
+
+        <div class="envelope-wrapper" (click)="openInvitation()" [class.open]="isOpening">
+
+            <div class="envelope">
+
+                <div class="flap"></div>
+
+                <div class="body"></div>
+
+                <div class="letter">
+
+                    <div class="letter-content">
+
+                        💌
+                        <p class="mini-text">A Special Invitation</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <p class="open-text">
+            Click the envelope to open the invitation
+        </p>
+
+    </div>
+
+    <!-- Invitation Card -->
+
+    <div *ngIf="opened" class="card invitation-card text-center p-4 shadow-lg">
+
+        <div class="profile-section">
+
+            <img src="assets/stickers/bingo1.jpeg" class="profile-img">
+
+
+
+        </div>
+
+        <h2>🎉 You're Invited 🎉</h2>
+
+        <p class="typing">
+            {{displayText}}
+        </p>
+        <div class="sender">
+            With Love 💖 <br>
+            <b>- {{senderName}}</b>
+        </div>
+        <hr>
+
+        <p>📅 Date : 21 March 2026</p>
+        <p>⏰ Time : 8:00 PM</p>
+        <p>📍 Location : Magathapalli</p>
+
+        <!-- Continue Button -->
+        <button class="btn btn-primary mt-3" (click)="openCard()">
+            Continue
+        </button>
+
+        <!-- Floating Story Card -->
+        <div class="story-overlay" *ngIf="showCard">
+
+            <div class="card story-card p-4">
+
+                <h3 class="story-title">A Small Story 💫</h3>
+
+                <p class="typing-text">
+                    {{displayText1}}
+                </p>
+
+                <p *ngIf="showHighlight" class="highlight-text">
+                    {{highlightText}}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

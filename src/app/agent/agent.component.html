@@ -1,0 +1,97 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+  <div class="card premium-card text-center p-5">
+
+    <!-- Initial -->
+    <div *ngIf="!started && !showIntro && !finished">
+      <h2 class="mb-4">Hii... Do You Want To Know Me? 💖</h2>
+      <button class="btn btn-yes me-3" (click)="startFlow('yes')">YES 😍</button>
+      <button class="btn btn-no" (click)="startFlow('no')">NO 🙈</button>
+    </div>
+
+    <!-- NO Intro -->
+    <div *ngIf="showIntro">
+      <h4>I have few questions… answer honestly 😉</h4>
+      <button class="btn btn-yes mt-3" (click)="beginQuestions()">Start 💌</button>
+    </div>
+
+    <!-- Questions -->
+    <div *ngIf="started && currentIndex < questions.length">
+
+      <!-- GIF -->
+      <img *ngIf="questions[currentIndex].type === 'image' 
+         || questions[currentIndex].type === 'gif'" [src]="questions[currentIndex].media" class="media-box mb-3"
+        alt="media">
+
+      <!-- VIDEO -->
+      <video *ngIf="questions[currentIndex].type === 'video'" [src]="questions[currentIndex].media" autoplay loop muted
+        class="media-box mb-3">
+      </video>
+
+      <!-- LOTTIE -->
+      <!-- <ng-lottie *ngIf="questions[currentIndex].type === 'lottie'"
+                  [options]="{ path: questions[currentIndex].media }"
+                  class="media-box">
+      </ng-lottie> -->
+
+      <h4 class="mb-3">{{ questions[currentIndex].text }}</h4>
+
+
+      <input type="text" class="form-control premium-input mb-3" [(ngModel)]="userAnswer"
+        placeholder="Type your answer honestly 😉... 💌">
+
+      <!-- <button class="btn btn-yes" (click)="submitAnswer()">Submit ✨</button> -->
+      <div class="d-flex justify-content-between mt-3">
+
+        <!-- Previous Button -->
+        <button class="btn btn-outline-dark" (click)="goPrevious()" [disabled]="currentIndex === 0">
+          Previous
+        </button>
+
+        <!-- Submit Button -->
+        <button class="btn btn-yes" (click)="submitAnswer()">
+          Submit ✨
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Celebration + Summary -->
+    <div *ngIf="finished" class="container mt-5">
+
+      <h2 class="text-center mb-4">💎 Your Beautiful Answers Summary</h2>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow">
+
+          <thead class="table-dark text-center">
+            <tr>
+              <th>#</th>
+              <th>Question</th>
+              <th>Your Answer</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let q of questions; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ q.text }}</td>
+              <td>{{ answers[i] }}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <p>Its Your Birthday Come Lets Celebrate... and don't forget to share screenshot of the answers to karthik.</p>
+      <div class="d-flex justify-content-between mt-4">
+
+        <button class="btn btn-outline-dark mt-3" (click)="restart()">Restart</button>
+        <button type="button" class="btn btn-dark rounded-pill px-4" routerLink="/countdown">
+          Next →
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
