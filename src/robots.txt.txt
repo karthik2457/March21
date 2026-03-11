@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://march21.vercel.app/sitemap.xml
